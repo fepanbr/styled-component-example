@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import StyledButton from './components/StyledButton';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+import StyledA from './components/StyledA';
 
 const PrimaryStyledButton = styled(StyledButton)`
   background: palevioletred;
@@ -21,12 +22,27 @@ background: transparent;
   margin: 0 1em;
   padding: 0.25em 1em;
   font-size: 20px;
+
+  :hover {
+    border: 2px solid red;
+  }
+
+  ::before {
+    content: '@';
+  }
   
+`
+
+const GlobalStyle = createGlobalStyle`
+  button {
+    color: yellow;
+  }
 `
 
 function App() {
   return (
     <div className="App">
+      <GlobalStyle />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -36,6 +52,7 @@ function App() {
           <StyledButton as="a" href="/">버튼</StyledButton>
           <StyledButton as={UppercaseButton} href="/">버튼</StyledButton>
           <StyledMyButton color="green">버튼</StyledMyButton>
+          <StyledA href="http://google.com" target="_BLANK" />
         </p>
         
       </header>
